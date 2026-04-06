@@ -13,6 +13,7 @@ import {
 } from "@/src/lib/validations/auth.schema";
 import { BrandPanel } from "../../ui/BrandPanel";
 import { FormField } from "../../ui/FormField";
+import { usersApi } from "@/src/lib/api/users.api";
 
 type ToastState = { type: "success" | "error"; message: string } | null;
 
@@ -43,24 +44,12 @@ export default function RegisterPage() {
 	const onSubmit = async (data: RegisterFormValues) => {
 		setIsLoading(true);
 		try {
-			// ─── TODO: Replace with real API call ───────────────────────────────
-			// const res = await fetch("/api/auth/register", {
-			//   method: "POST",
-			//   headers: { "Content-Type": "application/json" },
-			//   body: JSON.stringify({
-			//     name: data.fullName,
-			//     phone: data.phone,
-			//     email: data.email,
-			//     password: data.password,
-			//   }),
-			// });
-			// if (!res.ok) {
-			//   const err = await res.json();
-			//   throw new Error(err.message || "Registration failed");
-			// }
-			// ────────────────────────────────────────────────────────────────────
-
-			await new Promise(r => setTimeout(r, 1400));
+			await usersApi.register({
+				name: data.fullName,
+				email: data.email,
+				phone: data.phone,
+				password: data.password,
+			});
 
 			showToast(
 				"success",
@@ -83,23 +72,6 @@ export default function RegisterPage() {
 			{/* ── Form panel ── */}
 			<div className="flex-1 bg-brand-white flex items-center justify-center px-6 py-12 sm:px-10 lg:px-16">
 				<div className="w-full max-w-[440px] animate-fade-up">
-					{/* Inline Toast */}
-					{toast && (
-						<div
-							className={`mb-6 px-4 py-3 rounded-[6px] text-sm font-medium animate-fade-in flex items-center gap-2
-                ${
-									toast.type === "success"
-										? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-										: "bg-red-50 text-red-600 border border-red-200"
-								}`}>
-							<span
-								className={`w-1.5 h-1.5 rounded-full flex-shrink-0
-                  ${toast.type === "success" ? "bg-emerald-500" : "bg-red-500"}`}
-							/>
-							{toast.message}
-						</div>
-					)}
-
 					{/* Mobile header — logo + back to home */}
 					<div className="lg:hidden mb-10">
 						<Link
@@ -150,7 +122,7 @@ export default function RegisterPage() {
 							<FormField
 								label="Phone number"
 								type="tel"
-								placeholder="+880 1X XXXX XXXX"
+								placeholder="+1 234 567 8900"
 								autoComplete="tel"
 								error={errors.phone?.message}
 								{...register("phone")}
@@ -252,7 +224,22 @@ export default function RegisterPage() {
 							</Link>
 							.
 						</p>
-
+						{/* Inline Toast */}
+						{toast && (
+							<div
+								className={`mb-6 px-4 py-3 rounded-[6px] text-sm font-medium animate-fade-in flex items-center gap-2
+                ${
+									toast.type === "success"
+										? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+										: "bg-red-50 text-red-600 border border-red-200"
+								}`}>
+								<span
+									className={`w-1.5 h-1.5 rounded-full flex-shrink-0
+                  ${toast.type === "success" ? "bg-emerald-500" : "bg-red-500"}`}
+								/>
+								{toast.message}
+							</div>
+						)}
 						{/* Submit */}
 						<button
 							type="submit"

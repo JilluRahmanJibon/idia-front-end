@@ -13,6 +13,7 @@ import {
 } from "@/src/lib/validations/auth.schema";
 import { FormField } from "../../ui/FormField";
 import { BrandPanel } from "../../ui/BrandPanel";
+import { authApi } from "@/src/lib/api/auth.api";
 
 type ToastState = { type: "success" | "error"; message: string } | null;
 
@@ -38,21 +39,12 @@ export default function LoginPage() {
 	const onSubmit = async (data: LoginFormValues) => {
 		setIsLoading(true);
 		try {
-			// ─── TODO: Replace with real API call ───────────────────────────────
-			// const res = await fetch("/api/auth/login", {
-			//   method: "POST",
-			//   headers: { "Content-Type": "application/json" },
-			//   body: JSON.stringify(data),
-			// });
-			// if (!res.ok) {
-			//   const err = await res.json();
-			//   throw new Error(err.message || "Invalid credentials");
-			// }
-			// ────────────────────────────────────────────────────────────────────
+			const res = await authApi.login({
+				email: data.email,
+				password: data.password,
+			});
 
-			await new Promise(r => setTimeout(r, 1200));
-
-			showToast("success", "Welcome back! Redirecting…");
+			showToast("success", `Welcome back, ${res.user.name}!`);
 			setTimeout(() => router.push("/dashboard"), 1000);
 		} catch (err: unknown) {
 			const message =
