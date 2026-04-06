@@ -39,7 +39,7 @@ export default function PurchasesClient() {
 		<div className="max-w-4xl mx-auto px-4 py-10 space-y-6">
 			<div className="flex items-center gap-3">
 				<ShoppingBag className="w-6 h-6 text-[#c8a96e]" />
-				<h1 className="text-2xl font-semibold text-[#1a1a1a] tracking-tight">
+				<h1 className="text-2xl font-semibold   tracking-tight">
 					My Purchases
 				</h1>
 				<span className="ml-auto text-sm text-[#7c6a4a] bg-[#f5f0e8] px-3 py-1 rounded-full border border-[#e4d8c4]">

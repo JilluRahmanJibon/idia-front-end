@@ -13,8 +13,22 @@ export const apiClient = {
 		return data;
 	},
 
-	async get<T>(path: string): Promise<T> {
-		const res = await fetch(`${this.baseUrl}${path}`, {
+	async get<T>(path: string, params?: object): Promise<T> {
+		let fullPath = `${this.baseUrl}${path}`;
+
+		if (params) {
+			const query = Object.entries(params)
+				.filter(([, value]) => value !== undefined && value !== null)
+				.map(
+					([key, value]) =>
+						`${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`,
+				)
+				.join("&");
+
+			if (query) fullPath += `?${query}`;
+		}
+
+		const res = await fetch(fullPath, {
 			headers: { "Content-Type": "application/json" },
 			credentials: "include",
 		});
