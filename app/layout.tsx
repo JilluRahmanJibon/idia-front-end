@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/src/components/shared/Navbar";
 import Footer from "@/src/components/shared/Footer";
- 
+import { Providers } from "@/src/context/Providers";
+import Navbar from "@/src/components/shared/Navbar";
 
 const inter = Inter({
 	variable: "--font-sans",
@@ -14,7 +14,6 @@ const jetbrainsMono = JetBrains_Mono({
 	variable: "--font-mono",
 	subsets: ["latin"],
 });
-
 
 export const metadata: Metadata = {
 	title: {
@@ -27,7 +26,6 @@ export const metadata: Metadata = {
 	},
 	manifest: "/manifest.json",
 };
- 
 
 export default function RootLayout({
 	children,
@@ -39,9 +37,11 @@ export default function RootLayout({
 			lang="en"
 			className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}>
 			<body>
-				<Navbar />
-				<main>{children}</main>
-				<Footer />
+				<Providers>
+					<Navbar />
+					<main>{children}</main>
+					<Footer />
+				</Providers>
 			</body>
 		</html>
 	);

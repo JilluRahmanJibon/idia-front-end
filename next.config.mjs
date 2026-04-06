@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  async rewrites ()
+  {
+    return [
+      {
+        source: "/api/v1/:path*",
+        destination: "http://localhost:5050/api/v1/:path*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

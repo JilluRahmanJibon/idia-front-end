@@ -1,10 +1,7 @@
+import ProfileClient from "@/src/components/customer/profile";
 
-const page = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+export const metadata = { title: "Profile" };
+
+export default function ProfilePage() {
+	return <ProfileClient />;
 }
-
-export default page
