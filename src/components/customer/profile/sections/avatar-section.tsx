@@ -26,7 +26,7 @@ export default function AvatarSection({ user }: { user: UserResponse }) {
 	};
 
 	return (
-		<div className="flex flex-col md:flex-row md:items-end gap-5">
+		<div className="flex flex-col md:flex-row md:items-start gap-5 pt-16">
 			<div className="relative">
 				<div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-[#f5f0e8] border-4 border-white shadow-lg overflow-hidden ring-2 ring-[#c8a96e]/30">
 					{user.avatar ? (
@@ -57,7 +57,7 @@ export default function AvatarSection({ user }: { user: UserResponse }) {
 			</div>
 
 			<div className="space-y-1">
-				<h2 className="text-2xl md:text-3xl font-semibold text-[#0d0d0d] tracking-tight">
+				<h2 className="text-2xl md:text-3xl font-semibold text-[#1a1a1a] tracking-tight">
 					{user.name}
 				</h2>
 				<p className="text-sm font-medium text-[#7c6a4a] tracking-wide uppercase">
