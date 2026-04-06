@@ -44,12 +44,13 @@ export default function RegisterPage() {
 	const onSubmit = async (data: RegisterFormValues) => {
 		setIsLoading(true);
 		try {
-			await usersApi.register({
+			const res = await usersApi.register({
 				name: data.fullName,
 				email: data.email,
 				phone: data.phone,
 				password: data.password,
 			});
+			console.log("🚀 ~ onSubmit ~ res:", res);
 
 			showToast(
 				"success",
@@ -58,7 +59,9 @@ export default function RegisterPage() {
 			setTimeout(() => router.push("/login"), 2000);
 		} catch (err: unknown) {
 			const message =
-				err instanceof Error ? err.message : "Something went wrong";
+				(err as any)?.response?.data?.message ||
+				(err instanceof Error ? err.message : "Something went wrong");
+
 			showToast("error", message);
 		} finally {
 			setIsLoading(false);
