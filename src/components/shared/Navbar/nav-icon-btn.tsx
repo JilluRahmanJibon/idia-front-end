@@ -1,4 +1,3 @@
-import { cn } from "@/src/lib/utils";
 
 export function NavIconBtn({
 	icon,

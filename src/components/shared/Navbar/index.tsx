@@ -12,14 +12,14 @@ import {
 	ShoppingBag,
 	X,
 } from "lucide-react";
-import { cn } from "@/src/lib/utils";
-import { useAuth } from "@/src/context/AuthContext";
 import { NavUser } from "./types";
 import { NavIconBtn } from "./nav-icon-btn";
 import { NavAvatar } from "./nav-avatar";
 import { ProfileDropdown } from "./profile-dropdown";
 import { NotifDropdown } from "./notif-dropdown";
 import { MobileMenu } from "./mobile-menu";
+import { useAuth } from "@/context/AuthContext";
+import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
 	{ label: "Home", href: "/" },
@@ -162,7 +162,7 @@ export default function Navbar() {
 									</button>
 									{dropdownOpen && (
 										<ProfileDropdown
-											user={navUser}
+											user={{ ...navUser, role: navUser.role ?? "USER" }}  
 											onClose={() => setDropdownOpen(false)}
 											onLogout={handleLogout}
 										/>

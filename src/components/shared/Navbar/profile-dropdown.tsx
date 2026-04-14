@@ -9,7 +9,8 @@ import {
 	User,
 	Crown,
 } from "lucide-react";
-import { AppRole, isAdmin, ROLE_CONFIG } from "@/src/types/roles";
+import { AppRole, isAdmin, ROLE_CONFIG } from "@/types/roles";
+ 
 
 export interface NavUser {
 	name: string;

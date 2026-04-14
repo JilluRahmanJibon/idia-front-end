@@ -1,20 +1,6 @@
-import { apiClient } from "./client";
-
-export interface RegisterPayload {
-	name: string;
-	email: string;
-	phone?: string;
-	password: string;
-}
-
-export interface UserResponse {
-	id: string;
-	name: string;
-	email: string;
-	role: string;
-	status: string;
-	createdAt: string;
-}
+import { RegisterPayload } from "@/features/auth/types";
+import { apiClient } from "@/services/apiClient";
+import { UserResponse } from "@/types/user";
 
 export const usersApi = {
 	register: (payload: RegisterPayload) =>

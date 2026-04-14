@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { X } from "lucide-react";
-import { cn } from "@/src/lib/utils";
+import { cn } from "@/lib/utils";
 
 export function NotifDropdown({ onClose }: { onClose: () => void }) {
 	const notifs = [

@@ -1,7 +1,7 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { forwardRef, InputHTMLAttributes } from "react";
-import { cn } from "@/src/lib/utils";
 
 interface FormFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 	label: string;

@@ -10,9 +10,9 @@ import {
 	User,
 	X,
 } from "lucide-react";
-import { cn } from "@/src/lib/utils";
 import { NavUser } from "./types";
 import { NavAvatar } from "./nav-avatar";
+import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
 	{ label: "Home", href: "/" },

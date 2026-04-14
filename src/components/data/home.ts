@@ -1,10 +1,11 @@
+ 
 import {
 	CategoryItem,
 	ProductItem,
 	StatItem,
 	StepItem,
 	TestimonialItem,
-} from "@/src/types/home";
+} from "@/types/home";
 import { Star, Download, Users, Package } from "lucide-react";
  
 

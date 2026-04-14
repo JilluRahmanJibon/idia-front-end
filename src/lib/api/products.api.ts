@@ -1,5 +1,5 @@
-import { ProductsResponse } from "@/src/types/product";
-import { apiClient } from "./client";
+import { apiClient } from "@/services/apiClient";
+import { ProductsResponse } from "@/types/product";
 
 export interface GetProductsParams {
 	search?: string;

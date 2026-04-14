@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Play, Star } from "lucide-react";
-import { ProductItem } from "@/src/types/home";
+import { ProductItem } from "@/types/home";
 
 type Props = {
 	product: ProductItem;
